@@ -37,9 +37,11 @@ int main(int argc, char **argv) {
   int inicio = 0;
   int fim = numOfReg - 1;
   int meio = 0;
+  int numOfIters = 0;
 
 
   while(fim >= inicio && !achei){
+    numOfIters++;
     meio = (inicio + fim) / 2;
     fseek(f,meio*sizeof(Endereco),SEEK_SET);
     qt = fread(&e, sizeof(Endereco), 1, f);
@@ -54,6 +56,7 @@ int main(int argc, char **argv) {
 
   if(achei){
     printf("Encontrei\n");
+    printf("Iteracoes: %d\n", numOfIters);
   }else{
     printf(" N Encontrei\n");
   }
